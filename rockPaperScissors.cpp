@@ -11,10 +11,14 @@ int main() {
     string name1;
     string name2;
     int rounds;
+    /* STEP 2. Variables */
+    int rand1;
+    int rand2;
 
     /* Step 0. */ 
     int seed;
     cin >> seed;
+    // Setup Random Number
     srand(seed);
 
     /* Type your code here. */
@@ -31,6 +35,20 @@ int main() {
 
     // Print Beginning Message
     cout << name1 << " vs " << name2 << " for " << rounds << " rounds" << endl;
+
+    /* STEP 2. */
+    // Generate Round One with Tie Status
+    do {
+        // Generate Two Random Numbers 0-2
+        rand1 = rand() % 3;
+        rand2 = rand() % 3;
+        // Print Tie result
+        if (rand1 == rand2) {
+            cout << "Tie" << endl;
+        }//end if
+    } while (rand1 == rand2);//end do-while
+    
+    
 
     return 0;
 }
