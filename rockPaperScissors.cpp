@@ -45,10 +45,11 @@ int main() {
         // Print Tie result
         if (rand1 == rand2) {
             cout << "Tie" << endl;
-        }//end if
+            cout << "Anna: " << rand1 << " Bert: " << rand2 << endl;
+        } else {
+            cout << "Else: Anna: " << rand1 << " Bert: " << rand2 << endl;
+        }//end if  
     } while (rand1 == rand2);//end do-while
-    
-    
 
     return 0;
 }
