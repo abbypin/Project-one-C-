@@ -2,6 +2,24 @@
 #include <string>
 using namespace std;
 
+/* STEP 2. */
+// Generate Random Number 0-2
+int weapon() {
+    return rand() % 3;
+}//end weapon
+
+bool tie(int rand1, int rand2) {
+    bool isTie = false;
+    if (rand1 == rand2) {
+        cout << "Tie" << endl;
+        isTie = true;
+        //cout << "Anna: " << rand1 << " Bert: " << rand2 << endl;
+    } //else {
+        //cout << "Else: Anna: " << rand1 << " Bert: " << rand2 << endl;
+    //}//end if
+    return isTie;
+}//end tie()
+
 int main() {
     /* STEP 0. Variables */
     const int ROCK = 0;
@@ -37,31 +55,28 @@ int main() {
     cout << name1 << " vs " << name2 << " for " << rounds << " rounds" << endl;
 
     /* STEP 2. */
-    // Generate Round One with Tie Status
+    // Tie Status
+    bool isTie = false;
     do {
-        // Generate Two Random Numbers 0-2
-        rand1 = rand() % 3;
-        rand2 = rand() % 3;
-        // Print Tie result
-        if (rand1 == rand2) {
-            cout << "Tie" << endl;
-        }//end if  
-    } while (rand1 == rand2);//end do-while
-    
+        rand1 = weapon();
+        rand2 = weapon();
+        isTie = tie(rand1, rand2);
+    } while (isTie);
+
     if (rand1 == ROCK && rand2 == SCISSORS) {
         cout << name1 << " wins with rock" << endl;
     } else if (rand1 == SCISSORS && rand2 == PAPER) {
-        cout << name1 << " wins with scissors" << endl;
+        cout << name1 << " wins with rock" << endl;
     } else if (rand1 == PAPER && rand2 == ROCK) {
         cout << name1 << " wins with paper" << endl;
     } else if (rand2 == ROCK && rand1 == SCISSORS) {
         cout << name2 << " wins with rock" << endl;
     } else if (rand2 == SCISSORS && rand1 == PAPER) {
-        cout << name2 << " wins with scissors" << endl;
+        cout << name2 << " wins with rock" << endl;
     } else if (rand2 == PAPER && rand1 == ROCK) {
         cout << name2 << " wins with paper" << endl;
     } else {
-        cout << "An error occured." << endl;
+        cout << "an error occured." << endl;
     }//end else-if
 
     return 0;
