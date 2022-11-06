@@ -63,6 +63,8 @@ int main() {
         isTie = tie(rand1, rand2);
     } while (isTie);
 
+    /* STEP 3. */
+    // Print Result
     if (rand1 == ROCK && rand2 == SCISSORS) {
         cout << name1 << " wins with rock" << endl;
     } else if (rand1 == SCISSORS && rand2 == PAPER) {
