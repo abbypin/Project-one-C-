@@ -2,6 +2,24 @@
 #include <string>
 using namespace std;
 
+/* STEP 2. */
+// Generate Random Number 0-2
+int weapon() {
+    return rand() % 3;
+}//end weapon
+
+bool tie(int rand1, int rand2) {
+    bool isTie = false;
+    if (rand1 == rand2) {
+        cout << "Tie" << endl;
+        isTie = true;
+        cout << "Anna: " << rand1 << " Bert: " << rand2 << endl;
+    } else {
+        cout << "Else: Anna: " << rand1 << " Bert: " << rand2 << endl;
+    }//end if
+    return isTie;
+}//end tie()
+
 int main() {
     /* STEP 0. Variables */
     const int ROCK = 0;
@@ -12,8 +30,7 @@ int main() {
     string name2;
     int rounds;
     /* STEP 2. Variables */
-    int rand1;
-    int rand2;
+
 
     /* Step 0. */ 
     int seed;
@@ -37,18 +54,11 @@ int main() {
     cout << name1 << " vs " << name2 << " for " << rounds << " rounds" << endl;
 
     /* STEP 2. */
-    // Generate Round One with Tie Status
+    // Tie Status
+    bool isTie = false;
     do {
-        // Generate Two Random Numbers 0-2
-        rand1 = rand() % 3;
-        rand2 = rand() % 3;
-        // Print Tie result
-        if (rand1 == rand2) {
-            cout << "Tie" << endl;
-        }//end if
-    } while (rand1 == rand2);//end do-while
-    
-    
+        isTie = tie(weapon(), weapon());
+    } while (isTie);
 
     return 0;
 }
