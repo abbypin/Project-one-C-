@@ -29,9 +29,12 @@ int main() {
     string name1;
     string name2;
     int rounds;
-    /* STEP 2. Variables */
+    /* STEP 3. Variables */
     int rand1;
     int rand2;
+    /* STEP 4. Variables */
+    int totalWins1 = 0;
+    int totalWins2 = 0;
 
     /* Step 0. */ 
     int seed;
@@ -54,29 +57,49 @@ int main() {
     // Print Beginning Message
     cout << name1 << " vs " << name2 << " for " << rounds << " rounds" << endl;
 
-    /* STEP 2. */
-    // Tie Status
-    bool isTie = false;
-    do {
-        rand1 = weapon();
-        rand2 = weapon();
-        isTie = tie(rand1, rand2);
-    } while (isTie);
+    for (int i = 0; i < rounds; i++) {
+        /* STEP 2. */
+        // Tie Status
+        bool isTie = false;
+        do {
+            rand1 = weapon();
+            rand2 = weapon();
+            isTie = tie(rand1, rand2);
+        } while (isTie);
 
-    if (rand1 == ROCK && rand2 == SCISSORS) {
-        cout << name1 << " wins with rock" << endl;
-    } else if (rand1 == SCISSORS && rand2 == PAPER) {
-        cout << name1 << " wins with rock" << endl;
-    } else if (rand1 == PAPER && rand2 == ROCK) {
-        cout << name1 << " wins with paper" << endl;
-    } else if (rand2 == ROCK && rand1 == SCISSORS) {
-        cout << name2 << " wins with rock" << endl;
-    } else if (rand2 == SCISSORS && rand1 == PAPER) {
-        cout << name2 << " wins with rock" << endl;
-    } else if (rand2 == PAPER && rand1 == ROCK) {
-        cout << name2 << " wins with paper" << endl;
+        /* STEP 3. */
+        // Print Result
+        if (rand1 == ROCK && rand2 == SCISSORS) {
+            cout << name1 << " wins with rock" << endl;
+            totalWins1++;
+        } else if (rand1 == SCISSORS && rand2 == PAPER) {
+            cout << name1 << " wins with rock" << endl;
+            totalWins1++;
+        } else if (rand1 == PAPER && rand2 == ROCK) {
+            cout << name1 << " wins with paper" << endl;
+            totalWins1++;
+        } else if (rand2 == ROCK && rand1 == SCISSORS) {
+            cout << name2 << " wins with rock" << endl;
+            totalWins2++;
+        } else if (rand2 == SCISSORS && rand1 == PAPER) {
+            cout << name2 << " wins with rock" << endl;
+            totalWins2++;
+        } else if (rand2 == PAPER && rand1 == ROCK) {
+            cout << name2 << " wins with paper" << endl;
+            totalWins2++;
+        } else {
+            cout << "an error occured." << endl;
+        }//end else-if
+    }//end for-loop
+    
+    if (totalWins1 > totalWins2) {
+        cout << name1 << " wins " << totalWins1 << " and " << name2 << " wins " << totalWins2 << endl;
+    } else if (totalWins1 < totalWins2) {
+        cout << name2 << " wins " << totalWins2 << " and " << name1 << " wins " << totalWins1 << endl;
+    } else if (totalWins1 == totalWins2) {
+        cout << name1 << " wins " << totalWins1 << " and " << name2 << " wins " << totalWins2 << endl;
     } else {
-        cout << "an error occured." << endl;
+        cout << name1 << " wins " << totalWins1 << " and " << name2 << " wins " << totalWins2 << endl;
     }//end else-if
 
     return 0;
