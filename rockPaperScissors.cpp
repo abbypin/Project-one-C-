@@ -78,7 +78,8 @@ int main() {
         } else if (rand1 == PAPER && rand2 == ROCK) {
             cout << name1 << " wins with paper" << endl;
             totalWins1++;
-        } else if (rand2 == ROCK && rand1 == SCISSORS) {
+        }//end else-if
+        if (rand2 == ROCK && rand1 == SCISSORS) {
             cout << name2 << " wins with rock" << endl;
             totalWins2++;
         } else if (rand2 == SCISSORS && rand1 == PAPER) {
@@ -87,8 +88,6 @@ int main() {
         } else if (rand2 == PAPER && rand1 == ROCK) {
             cout << name2 << " wins with paper" << endl;
             totalWins2++;
-        } else {
-            cout << "an error occured." << endl;
         }//end else-if
     }//end for-loop
     
