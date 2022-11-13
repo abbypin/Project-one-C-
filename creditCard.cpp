@@ -14,7 +14,7 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
     // Read all data from file into three parallel vectors
     try {
         // Open File
-        inFS.open("CustomerData.numbers");
+        inFS.open("CustomerData.csv");
 
         // Add Data From File
         for (long unsigned index = 0; index < names.size(); ++index) {
@@ -29,6 +29,10 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
 
     // Close File
     inFS.close();
+
+    for (auto element : names) {
+        cout << element << endl;
+    }//end for-loop
 }//end ReadCustomerData()
 
 void printInputs(int &numOfCustomers, int &debtLimit, char &firstLetterOfCustomerName, string &stateAbbrev) {
@@ -57,7 +61,7 @@ void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOf
     // Output
     cout << "U.S. Report" << endl;// Report Header
     cout << "Customers: " << numOfCustomers << endl;
-    cout << "Highest Debt: " << name << endl;
+    cout << "Highest Debt: " << names.at(1) << endl;
 }//end printNameWithMaxDebt()
 
 int main() {
