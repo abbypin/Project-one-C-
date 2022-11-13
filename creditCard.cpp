@@ -14,14 +14,14 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
     // Read all data from file into three parallel vectors
     try {
         // Open File
-        inFS.open("CustomerData.csv");
+        inFS.open("CustomerData.numbers");
 
         // Add Data From File
         for (long unsigned index = 0; index < names.size(); ++index) {
             inFS >> names.at(index); // last name
             inFS >> states.at(index); // state of residence
             inFS >> debt.at(index);   // amount of debt
-        }
+        }//end for-loop
     } catch (string err) {
         // File Not Found
         cout << "Failed to read the data file: " << err << endl;
@@ -30,6 +30,35 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
     // Close File
     inFS.close();
 }//end ReadCustomerData()
+
+void printInputs(int &numOfCustomers, int &debtLimit, char &firstLetterOfCustomerName, string &stateAbbrev) {
+    cout << "\nTest Inputs: " << endl;
+    cout << "Number of Customers: " << numOfCustomers << endl;
+    cout << "Debt Limit: " << debtLimit << endl;
+    cout << "First Initial Letter: " << firstLetterOfCustomerName << endl;
+    cout << "State Abbreviation: " << stateAbbrev << endl;
+}//end printInputs()
+
+/* Step 2. */
+// Get Customer with Highest Debt
+void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOfCustomers) {
+    // Step 2 Variables
+    string name = names[0];
+    double maxDebt = debt[0];
+
+    // Loop through Debt and Names to find the Customer with the Highest Debt
+    for (unsigned long i = 1; i < numOfCustomers; i++) {
+        if (maxDebt < debt[i]) {
+            maxDebt = debt[i];
+            name = names[i];
+        }//end if
+    }//end for-loop
+
+    // Output
+    cout << "U.S. Report" << endl;// Report Header
+    cout << "Customers: " << numOfCustomers << endl;
+    cout << "Highest Debt: " << name << endl;
+}//end printNameWithMaxDebt()
 
 int main() {
     // Step 0 Variable
@@ -70,12 +99,10 @@ int main() {
     getline(cin, stateAbbrev);
 
     // Test Code to Check that Step 0 and Step 1 Works
-    // cout << "\nTest Inputs: " << endl;
-    // cout << "Number of Customers: " << numOfCustomers << endl;
-    // cout << "Debt Limit: " << debtLimit << endl;
-    // cout << "First Initial Letter: " << firstLetterOfCustomerName << endl;
-    // cout << "State Abbreviation: " << stateAbbrev << endl;
+    //printInputs(numOfCustomers, debtLimit, firstLetterOfCustomerName, stateAbbrev);
 
+    /* Step 2. */
+    printNameWithMaxDebt(debt, names, numOfCustomers);
 
    return 0;
 }//end main()
