@@ -71,14 +71,13 @@ int main() {
         cout << name1 << " wins with rock" << endl;
     } else if (rand1 == PAPER && rand2 == ROCK) {
         cout << name1 << " wins with paper" << endl;
-    } else if (rand2 == ROCK && rand1 == SCISSORS) {
+    }//end else-if
+    if (rand2 == ROCK && rand1 == SCISSORS) {
         cout << name2 << " wins with rock" << endl;
     } else if (rand2 == SCISSORS && rand1 == PAPER) {
         cout << name2 << " wins with rock" << endl;
     } else if (rand2 == PAPER && rand1 == ROCK) {
         cout << name2 << " wins with paper" << endl;
-    } else {
-        cout << "an error occured." << endl;
     }//end else-if
 
     return 0;
