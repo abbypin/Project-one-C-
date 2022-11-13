@@ -25,14 +25,25 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
    }
 
    inFS.close();
-}
+}//end ReadCustomerData()
 
-// Input # of customers and create parallel vectors
+int main() {
+    int numOfCustomers = 0;
+    // Input # of customers and create parallel vectors
+    cout << "How many customers are there?" << endl;
+    cin >> numOfCustomers;
+    vector<string> names(numOfCustomers);
+    vector<string> states(numOfCustomers);
+    vector<double> debt(numOfCustomers);
+    ReadCustomerData(names, states, debt);
 
 
-// Fill vectors with data  from another external file
-/* Type your code here */      
+
+    // Fill vectors with data from another external file
+    /* Type your code here */      
    // Input debt limit, search phrase, and state
 
+
+
    return 0;
-}
+}//end main()
