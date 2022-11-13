@@ -30,9 +30,20 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
     // Close File
     inFS.close();
 
+    cout << "Names: " << endl;
     for (auto element : names) {
         cout << element << endl;
-    }//end for-loop
+    }//end for-each
+
+    cout << "Debt: " << endl;
+    for (auto element : debt) {
+        cout << element << endl;
+    }//end for-each
+
+    cout << "States: " << endl;
+    for (auto element : states) {
+        cout << element << endl;
+    }//end for-each
 }//end ReadCustomerData()
 
 void printInputs(int &numOfCustomers, int &debtLimit, char &firstLetterOfCustomerName, string &stateAbbrev) {
