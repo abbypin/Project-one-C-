@@ -89,7 +89,6 @@ void printNamesWithLetter(vector<string> &names, int numOfCustomers, char firstL
         if (initial.find(firstLetterOfCustomerName) != string::npos) {
             numOfMatches++;
         }//end if
-        i++;
     }//end for-loop
 
     // Output
