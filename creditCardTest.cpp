@@ -46,6 +46,7 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
     // // 
 }//end ReadCustomerData()
 
+// Just used to Test Step 1
 void printInputs(int &numOfCustomers, int &debtLimit, char &firstLetterOfCustomerName, string &stateAbbrev) {
     cout << "\nTest Inputs: " << endl;
     cout << "Number of Customers: " << numOfCustomers << endl;
@@ -55,7 +56,7 @@ void printInputs(int &numOfCustomers, int &debtLimit, char &firstLetterOfCustome
 }//end printInputs()
 
 /* Step 2. */
-// Get Customer with Highest Debt
+// Print Customer with Highest Debt
 void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOfCustomers) {
     // Step 2 Variables
     string name = names[0];
@@ -74,6 +75,26 @@ void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOf
     cout << "Customers: " << numOfCustomers << endl;
     cout << "Highest Debt: " << name << endl;
 }//end printNameWithMaxDebt()
+
+/* Step 3. */
+// Print the Number of Customer Names that Start with Inputted Letter
+void printNamesWithLetter(vector<string> &names, int numOfCustomers, char firstLetterOfCustomerName) {
+    // Step 3 Variables
+    int numOfMatches = 0;
+    string initial;
+
+    // Get Number of Customer Names that Start with Specific Letter
+    for (unsigned long i = 0; i < numOfCustomers; i++) {
+        initial = names[i].substr(0, 1);//get first letter
+        if (initial.find(firstLetterOfCustomerName) != string::npos) {
+            numOfMatches++;
+        }//end if
+        i++;
+    }//end for-loop
+
+    // Output
+    cout << "Customer names that start with \'" << firstLetterOfCustomerName << "\': " << numOfMatches << endl;
+}//end printNamesWithLetter()
 
 int main() {
     // Step 0 Variable
@@ -118,6 +139,8 @@ int main() {
 
     /* Step 2. */
     printNameWithMaxDebt(debt, names, numOfCustomers);
+    /* Step 3. */
+    printNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
 
    return 0;
 }//end main()
