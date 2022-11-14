@@ -99,18 +99,23 @@ void printNumOfNamesWithLetter(vector<string> &names, int numOfCustomers, char f
 // Print the Number of Customers with Debt Over the Debt Limit
 void printNumWithPlusDebt(vector<double> &debt, int numOfCustomers, int debtLimit) {
     // Step 4 Variables
-    int num = 0;
+    int numWithDebt = 0;
+    int numNoDebt = 0;
     double debtNum;
 
     // Get Number of Customers with Debt Over the Debt Limit
     for (unsigned long i = 0; i < numOfCustomers; i++) {
         debtNum = debt[i];
         if (debtNum > (double)debtLimit) {
-            num++;
-        }//end if
+            numWithDebt++;
+        } else if (debtNum == 0) {
+            numNoDebt++;
+        }//end else-if
     }//end for-loop
 
-    cout << "Customers with debt over $" << (int)debtLimit << ": " << num << endl;
+    // Output
+    cout << "Customers with debt over $" << (int)debtLimit << ": " << numWithDebt << endl;
+    cout << "Customers debt free: " << numNoDebt << endl;
 }//end printNumWithPlusDebt()
 
 int main() {
