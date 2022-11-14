@@ -71,7 +71,6 @@ void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOf
     }//end for-loop
 
     // Output
-    cout << "U.S. Report" << endl;// Report Header
     cout << "Customers: " << numOfCustomers << endl;
     cout << "Highest Debt: " << name << endl;
 }//end printNameWithMaxDebt()
@@ -99,19 +98,46 @@ void printNumOfNamesWithLetter(vector<string> &names, int numOfCustomers, char f
 // Print the Number of Customers with Debt Over the Debt Limit
 void printNumWithPlusDebt(vector<double> &debt, int numOfCustomers, int debtLimit) {
     // Step 4 Variables
-    int num = 0;
+    int numWithDebt = 0;
+    int numNoDebt = 0;
     double debtNum;
 
     // Get Number of Customers with Debt Over the Debt Limit
     for (unsigned long i = 0; i < numOfCustomers; i++) {
         debtNum = debt[i];
         if (debtNum > (double)debtLimit) {
-            num++;
+            numWithDebt++;
+        } else if (debtNum == 0) {
+            numNoDebt++;
         }//end if
     }//end for-loop
 
-    cout << "Customers with debt over $" << (int)debtLimit << ": " << num << endl;
+    // Output
+    cout << "Customers with debt over $" << (int)debtLimit << ": " << numWithDebt << endl;
+    cout << "Customers debt free: " << numNoDebt << endl;
 }//end printNumWithPlusDebt()
+
+/* Step 5. */
+// Repeat for Each Customer in Inputted State
+void printDataForState(vector<string> &states, vector<string> &names, vector<double> &debt, char firstLetterOfCustomerName, int debtLimit, string stateAbbrev) {
+    // Step 5 Variables
+    int numOfCustomers = 0;
+    string state;
+
+    // Get Number of Customers in the Inputted State
+    for (unsigned long i = 0; i < states.size(); i++) {
+        state = states[i];
+        if (state.compare(stateAbbrev) == 0)
+            numOfCustomers++;
+        //end if
+    }//end for-loop
+
+    // Output
+    cout << stateAbbrev << " Report" << endl;
+    printNameWithMaxDebt(debt, names, numOfCustomers);
+    printNumOfNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
+    printNumWithPlusDebt(debt, numOfCustomers, debtLimit);
+}//end printDataForState()
 
 int main() {
     // Step 0 Variable
@@ -154,12 +180,17 @@ int main() {
     // Test Code to Check that Step 0 and Step 1 Works
     //printInputs(numOfCustomers, debtLimit, firstLetterOfCustomerName, stateAbbrev);
 
+    
+    // Output /* Step 5. */
+    cout << "U.S. Report" << endl;// Report Header
     /* Step 2. */
     printNameWithMaxDebt(debt, names, numOfCustomers);
     /* Step 3. */
     printNumOfNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
     /* Step 4. */
     printNumWithPlusDebt(debt, numOfCustomers, debtLimit);
+    /* Step 5. */
+    printDataForState(states, names, debt, firstLetterOfCustomerName, debtLimit, stateAbbrev);
 
    return 0;
 }//end main()
