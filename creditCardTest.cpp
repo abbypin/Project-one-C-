@@ -133,7 +133,7 @@ void printDataForState(vector<string> &states, vector<string> &names, vector<dou
     }//end for-loop
 
     // Output
-    cout << stateAbbrev << " Report" << endl;
+    cout << "\n" << stateAbbrev << " Report" << endl;
     printNameWithMaxDebt(debt, names, numOfCustomers);
     printNumOfNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
     printNumWithPlusDebt(debt, numOfCustomers, debtLimit);
@@ -182,7 +182,7 @@ int main() {
 
     
     // Output /* Step 5. */
-    cout << "U.S. Report" << endl;// Report Header
+    cout << "\nU.S. Report" << endl;// Report Header
     /* Step 2. */
     printNameWithMaxDebt(debt, names, numOfCustomers);
     /* Step 3. */
