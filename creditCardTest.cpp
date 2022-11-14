@@ -109,7 +109,7 @@ void printNumWithPlusDebt(vector<double> &debt, int numOfCustomers, int debtLimi
             numWithDebt++;
         } else if (debtNum == 0) {
             numNoDebt++;
-        }//end if
+        }//end else-if
     }//end for-loop
 
     // Output
