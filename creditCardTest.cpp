@@ -32,7 +32,7 @@ void ReadCustomerData(vector<string>& names, vector<string>& states, vector<doub
 
     // Test Code
     // cout << "Names: " << endl;
-    // for (int i = 0; i < 5; i++) {
+    // for (int i = 0; i < 1000; i++) {
     //     cout << names.at(i) << endl;
     // }//end for-each
     // cout << "Debt: " << endl;
@@ -78,23 +78,40 @@ void printNameWithMaxDebt(vector<double> &debt, vector<string> &names, int numOf
 
 /* Step 3. */
 // Print the Number of Customer Names that Start with Inputted Letter
-void printNamesWithLetter(vector<string> &names, int numOfCustomers, char firstLetterOfCustomerName) {
+void printNumOfNamesWithLetter(vector<string> &names, int numOfCustomers, char firstLetterOfCustomerName) {
     // Step 3 Variables
     int numOfMatches = 0;
-    string initial;
+    string name;
 
     // Get Number of Customer Names that Start with Specific Letter
     for (unsigned long i = 0; i < numOfCustomers; i++) {
-        initial = names[i].substr(0, 1);//get first letter
-        if (initial.find(firstLetterOfCustomerName) != string::npos) {
+        name = names[i].substr(0, 1);//get first letter
+        if (name.find(firstLetterOfCustomerName) != string::npos)
             numOfMatches++;
-        }//end if
-        i++;
+        //end if
     }//end for-loop
 
     // Output
     cout << "Customer names that start with \'" << firstLetterOfCustomerName << "\': " << numOfMatches << endl;
-}//end printNamesWithLetter()
+}//end printNumOfNamesWithLetter()
+
+/* Step 4. */
+// Print the Number of Customers with Debt Over the Debt Limit
+void printNumWithPlusDebt(vector<double> &debt, int numOfCustomers, int debtLimit) {
+    // Step 4 Variables
+    int num = 0;
+    double debtNum;
+
+    // Get Number of Customers with Debt Over the Debt Limit
+    for (unsigned long i = 0; i < numOfCustomers; i++) {
+        debtNum = debt[i];
+        if (debtNum > (double)debtLimit) {
+            num++;
+        }//end if
+    }//end for-loop
+
+    cout << "Customers with debt over $" << (int)debtLimit << ": " << num << endl;
+}//end printNumWithPlusDebt()
 
 int main() {
     // Step 0 Variable
@@ -112,8 +129,8 @@ int main() {
 
     // Create Parallel Vectors
     vector<string> names(numOfCustomers);
-    vector<string> states(numOfCustomers);
     vector<double> debt(numOfCustomers);
+    vector<string> states(numOfCustomers);
 
     // Fill vectors with data from another external file
     /* Type your code here */  
@@ -140,7 +157,9 @@ int main() {
     /* Step 2. */
     printNameWithMaxDebt(debt, names, numOfCustomers);
     /* Step 3. */
-    printNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
+    printNumOfNamesWithLetter(names, numOfCustomers, firstLetterOfCustomerName);
+    /* Step 4. */
+    printNumWithPlusDebt(debt, numOfCustomers, debtLimit);
 
    return 0;
 }//end main()
